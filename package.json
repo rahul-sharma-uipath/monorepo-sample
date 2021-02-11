@@ -1,0 +1,25 @@
+{
+	"name": "root",
+	"private": true,
+	"scripts": {
+		"start:cloud": "yarn workspace @monorepo/cloud start",
+		"start:onprem": "yarn workspace @monorepo/onprem start",
+		"install": "yarn install:cloud && yarn install:onprem",
+		"install:cloud": "cd packages/cloud && yarn",
+		"install:onprem": "cd packages/onprem && yarn",
+		"test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+		"deploy": "FORCE_COLOR=true lerna run deploy",
+		"build": "lerna run build",
+		"clean": "yarn clean:artifacts && yarn clean:packages && yarn clean:root",
+		"clean:artifacts": "lerna run clean --parallel",
+		"clean:packages": "lerna clean --yes",
+		"clean:root": "rm -rf node_modules"
+	},
+	"workspaces": [
+		"packages/**"
+	],
+	"devDependencies": {
+		"@react-workspaces/react-scripts": "^3.4.0-alpha-01",
+		"lerna": "^3.22.1"
+	}
+}
