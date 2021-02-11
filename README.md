@@ -13,4 +13,5 @@ The sample is built following the example from https://github.com/react-workspac
 
 ## Usage
 To start cloud - `yarn start:cloud`
+
 To start onprem - `yarn start:onprem`
